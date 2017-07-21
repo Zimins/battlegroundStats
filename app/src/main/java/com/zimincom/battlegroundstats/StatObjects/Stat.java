@@ -1,14 +1,10 @@
 package com.zimincom.battlegroundstats.StatObjects;
 
 /**
- * Created by Zimincom on 2017. 7. 16..
+ * Created by Zimincom on 2017. 7. 21..
  */
 
 public class Stat {
-    private String Region;
-    private String Season;
-    private String Match;
-    private Stat[] Stats;
 
     public Object partition;
     public String label;

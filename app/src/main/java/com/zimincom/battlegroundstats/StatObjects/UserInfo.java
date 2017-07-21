@@ -16,6 +16,6 @@ public class UserInfo {
     private String LiveTracking;
     private String Playername;
     private int PubgTrackerId;
-    private Stat[] Stats;
+    private History[] histories;
 
 }
