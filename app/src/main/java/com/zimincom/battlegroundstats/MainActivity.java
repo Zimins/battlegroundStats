@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.zimincom.battlegroundstats.StatObjects.UserInfo;
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
 
+        Logger.addLogAdapter(new AndroidLogAdapter());
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
                if (response.isSuccessful()) {
                    UserInfo userInfo = response.body();
+                   Log.d("main", userInfo.toString());
                    Logger.json(userInfo.toString());
                } else {
                    Log.d("main", "error");
