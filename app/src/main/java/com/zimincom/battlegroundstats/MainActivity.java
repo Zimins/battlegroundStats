@@ -7,6 +7,9 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+import com.zimincom.battlegroundstats.StatObjects.History;
+import com.zimincom.battlegroundstats.StatObjects.LiveTracking;
+import com.zimincom.battlegroundstats.StatObjects.Stat;
 import com.zimincom.battlegroundstats.StatObjects.UserInfo;
 
 import retrofit2.Call;
@@ -42,7 +45,13 @@ public class MainActivity extends AppCompatActivity {
                if (response.isSuccessful()) {
                    UserInfo userInfo = response.body();
                    Log.d("main", userInfo.toString());
-                   Logger.json(userInfo.toString());
+                   Logger.json(response.body().toString());
+                   LiveTracking[] liveTracking = userInfo.getLiveTracking();
+                   History[] histories = userInfo.getHistories();
+                   Stat[] stats = histories[0].getStats();
+                   Logger.d(liveTracking);
+                   Logger.d(histories[0]);
+                   Logger.d(stats[0]);
                } else {
                    Log.d("main", "error");
                }
