@@ -23,15 +23,12 @@ import static com.zimincom.battlegroundstats.RemoteService.BASE_URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText nicName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        nicName = (EditText) findViewById(R.id.nicName);
-        
         Gson gson = new Gson();
 
         Logger.addLogAdapter(new AndroidLogAdapter());
