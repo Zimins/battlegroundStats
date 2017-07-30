@@ -1,9 +1,10 @@
 package com.zimincom.battlegroundstats;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -23,6 +24,11 @@ import static com.zimincom.battlegroundstats.RemoteService.BASE_URL;
 
 public class MainActivity extends AppCompatActivity {
 
+    Intent intent;
+    String userNickName = "";
+    RemoteService pubgService;
+
+    TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,25 +44,41 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        RemoteService pubgService = retrofit.create(RemoteService.class);
+        pubgService = retrofit.create(RemoteService.class);
+        result = (TextView) findViewById(R.id.tv_response);
 
-        Call<UserInfo> call = pubgService.getUserInfo("Good_life");
+        intent = getIntent();
+
+        if (intent != null) {
+            userNickName = intent.getExtras().getString("nickName", "killer_lim");
+            if (!userNickName.equals("")) {
+                requestStats(userNickName);
+            } else {
+                Logger.d("there is no name:");
+            }
+        }
+    }
+
+    private void requestStats(String userNickName) {
+
+        Call<UserInfo> call = pubgService.getUserInfo(userNickName);
         call.enqueue(new Callback<UserInfo>() {
             @Override
             public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
-               if (response.isSuccessful()) {
-                   UserInfo userInfo = response.body();
-                   Log.d("main", userInfo.toString());
-                   Logger.json(response.body().toString());
-                   LiveTracking[] liveTracking = userInfo.getLiveTracking();
-                   History[] histories = userInfo.getHistories();
-                   Stat[] stats = histories[0].getStats();
-                   Logger.d(liveTracking);
-                   Logger.d(histories[0]);
-                   Logger.d(stats[17]);
-               } else {
-                   Log.d("main", "error");
-               }
+                if (response.isSuccessful()) {
+                    UserInfo userInfo = response.body();
+                    Log.d("main", userInfo.toString());
+                    Logger.json(response.body().toString());
+                    LiveTracking[] liveTracking = userInfo.getLiveTracking();
+                    History[] histories = userInfo.getHistories();
+                    Stat[] stats = histories[0].getStats();
+                    Logger.d(liveTracking);
+                    Logger.d(histories[0]);
+                    Logger.d(stats[17]);
+                    result.setText(userInfo.toString());
+                } else {
+                    Log.d("main", "error");
+                }
             }
 
             @Override
