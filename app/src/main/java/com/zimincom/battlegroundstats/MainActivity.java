@@ -3,6 +3,7 @@ package com.zimincom.battlegroundstats;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.google.gson.Gson;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -22,11 +23,15 @@ import static com.zimincom.battlegroundstats.RemoteService.BASE_URL;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText nicName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        nicName = (EditText) findViewById(R.id.nicName);
+        
         Gson gson = new Gson();
 
         Logger.addLogAdapter(new AndroidLogAdapter());
