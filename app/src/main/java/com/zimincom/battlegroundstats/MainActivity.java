@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         RemoteService pubgService = retrofit.create(RemoteService.class);
 
-        Call<UserInfo> call = pubgService.getUserInfo("Killer_lim");
+        Call<UserInfo> call = pubgService.getUserInfo("Good_life");
         call.enqueue(new Callback<UserInfo>() {
             @Override
             public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                    Stat[] stats = histories[0].getStats();
                    Logger.d(liveTracking);
                    Logger.d(histories[0]);
-                   Logger.d(stats[0]);
+                   Logger.d(stats[17]);
                } else {
                    Log.d("main", "error");
                }

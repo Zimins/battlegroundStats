@@ -1,6 +1,7 @@
 package com.zimincom.battlegroundstats.StatObjects;
 
 import com.google.gson.annotations.SerializedName;
+import com.zimincom.battlegroundstats.Category;
 
 /**
  * Created by Zimincom on 2017. 7. 21..
@@ -12,12 +13,12 @@ public class Stat {
     @SerializedName("label")            private String label;
     @SerializedName("subLabel")         private Object subLabel;
     @SerializedName("field")            private String field;
-    @SerializedName("category")         private String category;
+    @SerializedName("category")         private Category category;
     @SerializedName("ValueInt")         private int valueInt;
     @SerializedName("ValueDec")         private float valueDec;
     @SerializedName("value")            private String value;
     @SerializedName("rank")             private Integer rank;
-    @SerializedName("percentile")       private Integer percentile;
+    @SerializedName("percentile")       private float percentile;
     @SerializedName("displayValue")     private String displayValue;
 
 
