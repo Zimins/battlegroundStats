@@ -47,15 +47,19 @@ public class MainActivity extends AppCompatActivity {
         pubgService = retrofit.create(RemoteService.class);
         result = (TextView) findViewById(R.id.tv_response);
 
+        // TODO: 2017. 7. 30. 로딩바 추가하기
+
         intent = getIntent();
 
-        if (intent != null) {
-            userNickName = intent.getExtras().getString("nickName", "killer_lim");
+        if (intent.getExtras() != null) {
+            userNickName = intent.getExtras().getString("nickName", "");
             if (!userNickName.equals("")) {
                 requestStats(userNickName);
             } else {
                 Logger.d("there is no name:");
             }
+        } else {
+            Logger.d("there is no intent");
         }
     }
 
