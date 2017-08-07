@@ -12,9 +12,9 @@ import android.widget.EditText;
 
 public class IntroActivity extends Activity {
 
-    EditText nicNameInput;
+    EditText nickNameInput;
     Button buttonSearch;
-    String nicName = null;
+    String nickName = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +22,14 @@ public class IntroActivity extends Activity {
         setContentView(R.layout.activity_intro);
 
         buttonSearch = (Button) findViewById(R.id.button_search);
-        nicNameInput = (EditText) findViewById(R.id.nicNameInput);
+        nickNameInput = (EditText) findViewById(R.id.nickNameInput);
 
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                nicName = nicNameInput.getText().toString();
+                nickName = nickNameInput.getText().toString();
                 Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+                intent.putExtra("nickName", nickName);
                 startActivity(intent);
                 //Log.d("name", nicName);
 
