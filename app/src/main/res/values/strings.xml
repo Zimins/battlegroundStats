@@ -2,4 +2,5 @@
     <string name="app_name">battlegroundStats</string>
     <string name="main_button_search">검색하기</string>
     <string name="main_input_hint">배그 닉네임을 입력하세요!</string>
+    <string name="hint_input_nickname">please input nickname</string>
 </resources>

@@ -18,7 +18,7 @@ public class UserInfo {
     @SerializedName("seasonDisplay")    private String seasonDisplay;
     @SerializedName("LastUpdated")      private String lastUpdated;
     @SerializedName("LiveTracking")     private LiveTracking[] liveTracking;
-    @SerializedName("PlayerName")       private String playername;
+    @SerializedName("PlayerName")       private String playerName;
     @SerializedName("PubgTrackerId")    private int pubgTrackerId;
     @SerializedName("Stats")            private History[] histories;
 
@@ -33,7 +33,7 @@ public class UserInfo {
                 ", seasonDisplay='" + seasonDisplay + '\'' +
                 ", lastUpdated='" + lastUpdated + '\'' +
                 ", liveTracking=" + Arrays.toString(liveTracking) +
-                ", playername='" + playername + '\'' +
+                ", playername='" + playerName + '\'' +
                 ", pubgTrackerId=" + pubgTrackerId +
                 ", histories=" + Arrays.toString(histories) +
                 '}';
@@ -45,5 +45,13 @@ public class UserInfo {
 
     public History[] getHistories() {
         return histories;
+    }
+
+    public String getAvatarImageUrl() {
+        return avatarImageUrl;
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 }
