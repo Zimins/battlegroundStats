@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -82,6 +84,19 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Logger.d("there is no intent");
         }
+
+        nickNameInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    searchProgressBar.setVisibility(View.VISIBLE);
+                    requestStats(nickNameInput.getText().toString());
+                }  else {
+                    return false;
+                }
+                return true;
+            }
+        });
     }
 
     private void requestStats(final String userNickName) {
@@ -112,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
                         searchProgressBar.setVisibility(View.INVISIBLE);
                     }
 
-
                 } else {
                     Logger.d("response is not successful");
                 }
@@ -134,7 +148,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_search) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        } else if (item.getItemId() == R.id.menu_search) {
             searchProgressBar.setVisibility(View.VISIBLE);
             requestStats(nickNameInput.getText().toString());
         }
