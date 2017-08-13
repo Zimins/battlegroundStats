@@ -1,5 +1,6 @@
 package com.zimincom.battlegroundstats;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -19,24 +20,30 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "overview";
+                return StatMode.overview.name();
             case 1:
-                return "Solo";
+                return StatMode.solo.name();
             case 2:
-                return "Duo";
+                return StatMode.duo.name();
             case 3:
-                return "Squad";
+                return StatMode.squad.name();
         }
         return "";
     }
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = new OverviewFragment();
-//        Bundle args = new Bundle();
-//        // Our object is just an integer :-P
-//        args.putInt(DemoObjectFragment.ARG_OBJECT, i + 1);
-//        fragment.setArguments(args);
+        Fragment fragment;
+        if (position == 0) {
+            fragment = new OverviewFragment();
+        } else {
+            fragment = new StatFragment();
+        }
+
+        // TODO: 2017. 8. 13. statfragment 에 게임 모드 정보 보내기  
+        Bundle args = new Bundle();
+        args.putString("key_statmode", getPageTitle(position).toString());
+        fragment.setArguments(args);
         return fragment;
     }
 

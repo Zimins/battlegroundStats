@@ -1,7 +1,7 @@
 package com.zimincom.battlegroundstats.StatObjects;
 
 import com.google.gson.annotations.SerializedName;
-import com.zimincom.battlegroundstats.MatchMode;
+import com.zimincom.battlegroundstats.StatMode;
 
 /**
  * Created by Zimincom on 2017. 7. 16..
@@ -10,7 +10,7 @@ import com.zimincom.battlegroundstats.MatchMode;
 public class History {
     @SerializedName("Region") private String region;
     @SerializedName("Season") private String season;
-    @SerializedName("Match")  private MatchMode matchMode;
+    @SerializedName("Match")  private StatMode statMode;
     @SerializedName("Stats")  private Stat[] stats;
 
     public Stat[] getStats() {
@@ -22,7 +22,7 @@ public class History {
         return "History{" +
                 "region='" + region + '\'' +
                 ", season='" + season + '\'' +
-                ", matchMode=" + matchMode +
+                ", statMode=" + statMode +
                 ", stats"  +
                 '}';
     }
