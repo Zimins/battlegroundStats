@@ -2,12 +2,16 @@ package com.zimincom.battlegroundstats;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     TextView result;
     EditText nickNameInput;
     ProgressBar searchProgressBar;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
         pubgService = retrofit.create(RemoteService.class);
         profileImage = (ImageView) findViewById(R.id.iv_profile);
-        nicknameTextView = (TextView) findViewById(R.id.tv_nickname);
-        result = (TextView) findViewById(R.id.tv_response);
+
         nickNameInput = (EditText) findViewById(R.id.input_nickname);
         searchProgressBar = (ProgressBar) findViewById(R.id.progress_search);
-
-        // TODO: 2017. 7. 30. 로딩바 추가하기
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
 
         intent = getIntent();
 
@@ -82,6 +85,24 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Logger.d("there is no intent");
         }
+
+        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_bar);
+        tabLayout.setupWithViewPager(viewPager);
+
+        nickNameInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    searchProgressBar.setVisibility(View.VISIBLE);
+                    requestStats(nickNameInput.getText().toString());
+                }  else {
+                    return false;
+                }
+                return true;
+            }
+        });
     }
 
     private void requestStats(final String userNickName) {
@@ -104,14 +125,11 @@ public class MainActivity extends AppCompatActivity {
                         Picasso.with(MainActivity.this)
                                 .load(userInfo.getAvatarImageUrl())
                                 .into(profileImage);
-                        nicknameTextView.setText(userInfo.getPlayerName());
-                        result.setText(userInfo.toString());
                     }
 
                     if (searchProgressBar.getVisibility() == View.VISIBLE) {
                         searchProgressBar.setVisibility(View.INVISIBLE);
                     }
-
 
                 } else {
                     Logger.d("response is not successful");
@@ -134,7 +152,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_search) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        } else if (item.getItemId() == R.id.menu_search) {
             searchProgressBar.setVisibility(View.VISIBLE);
             requestStats(nickNameInput.getText().toString());
         }
