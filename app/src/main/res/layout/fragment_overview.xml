@@ -2,31 +2,156 @@
 <android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="this is overview"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="업데이트:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp"/>
 
-        <ImageView
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_squadinfo"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:elevation="8dp"
+            app:contentPadding="8dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="295dp"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="0dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="43dp"
+            app:cardElevation="8dp"
+            app:contentPadding="8dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_squadinfo"/>
+
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mainview"/>
-        <ImageView
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:text="지역"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"/>
+
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mainview"/>
-    </LinearLayout>
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView4"
+            app:layout_constraintLeft_toRightOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.0"/>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시즌"
+            app:layout_constraintBottom_toBottomOf="@+id/spinner"
+            app:layout_constraintTop_toTopOf="@+id/spinner"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintRight_toLeftOf="@+id/spinner2"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="64dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="@+id/textView5"
+            android:layout_marginRight="16dp"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="16dp"/>
+
+        <FrameLayout
+            android:layout_width="368dp"
+            android:layout_height="1dp"
+            android:background="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            android:id="@+id/line1">
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/label_duo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="DUO"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line1"/>
+
+        <FrameLayout
+            android:layout_width="368dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:background="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@+id/label_duo"
+            tools:layout_editor_absoluteX="8dp"
+            android:id="@+id/frameLayout2">
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/lavel_squad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="SQUAD"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout2"
+            android:layout_marginStart="16dp"/>
+
+        <FrameLayout
+            android:layout_width="368dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:background="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@+id/lavel_squad"
+            tools:layout_editor_absoluteX="8dp">
+
+        </FrameLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
 
 
 </android.support.v4.widget.NestedScrollView>
