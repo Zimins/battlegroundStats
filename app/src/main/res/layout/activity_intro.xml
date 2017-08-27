@@ -58,8 +58,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <EditText
+        <!--<EditText-->
+        <AutoCompleteTextView
             android:id="@+id/nickNameInput"
+            android:textColor="#FFFFFF"
             android:inputType="text"
             android:maxLength="40"
             android:singleLine="true"
