@@ -3,18 +3,21 @@ package com.zimincom.battlegroundstats;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 
 
 public class IntroActivity extends Activity {
 
-    EditText nickNameInput;
+    AutoCompleteTextView nickNameInput;
     Button buttonSearch;
     String nickName = null;
+
+    private static final String[] COUNTRIES = new String[] {
+            "Belgium", "France", "Italy", "Germany", "Spain"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +25,12 @@ public class IntroActivity extends Activity {
         setContentView(R.layout.activity_intro);
 
         buttonSearch = (Button) findViewById(R.id.button_search);
-        nickNameInput = (EditText) findViewById(R.id.nickNameInput);
+        nickNameInput = (AutoCompleteTextView) findViewById(R.id.nickNameInput);
 
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+        nickNameInput.setAdapter(adapter);
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
