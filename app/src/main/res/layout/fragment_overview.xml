@@ -14,70 +14,78 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/label_updatetime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="업데이트:"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/label_locale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="14dp"
+                    android:text="지역"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/label_updatetime"/>
+
+                <Spinner
+                    android:id="@+id/spinner_locale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/label_locale"
+                    app:layout_constraintLeft_toRightOf="@+id/label_locale"
+                    app:layout_constraintTop_toTopOf="@+id/label_locale"
+                    app:layout_constraintVertical_bias="0.0"/>
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시즌"
+                    app:layout_constraintBottom_toBottomOf="@+id/spinner_locale"
+                    app:layout_constraintTop_toTopOf="@+id/spinner_locale"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintRight_toLeftOf="@+id/spinner2"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginEnd="16dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="64dp"
+                    android:layout_height="24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="@+id/textView5"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginEnd="16dp"/>
+
+            </android.support.constraint.ConstraintLayout>
 
 
-            <TextView
-                android:id="@+id/label_updatetime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="업데이트:"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
-                android:id="@+id/label_locale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="14dp"
-                android:text="지역"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/label_updatetime"/>
-
-            <Spinner
-                android:id="@+id/spinner_locale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/label_locale"
-                app:layout_constraintLeft_toRightOf="@+id/label_locale"
-                app:layout_constraintTop_toTopOf="@+id/label_locale"
-                app:layout_constraintVertical_bias="0.0"/>
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="시즌"
-                app:layout_constraintBottom_toBottomOf="@+id/spinner_locale"
-                app:layout_constraintTop_toTopOf="@+id/spinner_locale"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintRight_toLeftOf="@+id/spinner2"
-                android:layout_marginRight="16dp"
-                android:layout_marginEnd="16dp"/>
-
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="64dp"
-                android:layout_height="24dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                app:layout_constraintTop_toTopOf="@+id/textView5"
-                android:layout_marginRight="16dp"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginEnd="16dp"/>
 
             <FrameLayout
                 android:id="@+id/line1"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
@@ -87,262 +95,17 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinner_locale"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp">
-
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp">
             </FrameLayout>
 
-            <include layout="@layout/row_solo"/>
-
-            <TextView
-                android:id="@+id/title_solo_row"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="SOLO"
-                android:textSize="@dimen/size_subtitle"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line1"/>
-
-            <TextView
-                android:id="@+id/solo_rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:text="10위"
-                app:layout_constraintBaseline_toBaselineOf="@+id/title_solo_row"
-                app:layout_constraintLeft_toRightOf="@+id/title_solo_row"/>
-
-            <TextView
-                android:id="@+id/label_solo_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="레이팅"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/guideline"
-                app:layout_constraintRight_toLeftOf="@+id/num_rating"/>
-
-            <TextView
-                android:id="@+id/label_solo_win_rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="승률"
-                app:layout_constraintBottom_toTopOf="@+id/guideline"
-                app:layout_constraintLeft_toRightOf="@+id/num_rating"
-                app:layout_constraintRight_toLeftOf="@+id/num_win_rate"/>
-
-            <TextView
-                android:id="@+id/label_solo_top10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TOP10비율"
-                app:layout_constraintBottom_toTopOf="@+id/guideline"
-                app:layout_constraintLeft_toRightOf="@+id/num_win_rate"
-                app:layout_constraintRight_toLeftOf="@+id/num_top10_rate"/>
-
-            <android.support.constraint.Guideline
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/guideline"
-                app:layout_constraintGuide_begin="168dp"
-                android:orientation="horizontal"
-                tools:layout_editor_absoluteY="249dp"
-                tools:layout_editor_absoluteX="0dp"/>
-
-            <TextView
-                android:id="@+id/num_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBaseline_toBaselineOf="@+id/label_solo_rating"
-                app:layout_constraintLeft_toRightOf="@+id/label_solo_rating"
-                tools:text="1,234"
-                app:layout_constraintRight_toLeftOf="@+id/label_solo_win_rate"/>
-
-            <TextView
-                android:id="@+id/num_win_rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBaseline_toBaselineOf="@+id/label_solo_win_rate"
-                app:layout_constraintLeft_toRightOf="@+id/label_solo_win_rate"
-                tools:text="50%"
-                app:layout_constraintRight_toLeftOf="@+id/label_solo_top10"/>
-
-            <TextView
-                android:id="@+id/num_top10_rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBaseline_toBaselineOf="@+id/label_solo_top10"
-                app:layout_constraintLeft_toRightOf="@+id/label_solo_top10"
-                app:layout_constraintRight_toRightOf="parent"
-                tools:text="13.3%"/>
-
-            <TextView
-                android:id="@+id/percent_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintHorizontal_bias="0.545"
-                app:layout_constraintLeft_toLeftOf="@+id/label_solo_rating"
-                app:layout_constraintRight_toRightOf="@+id/num_rating"
-                app:layout_constraintTop_toBottomOf="@+id/num_rating"
-                tools:text="상위 10%"/>
-
-            <TextView
-                android:id="@+id/percent_win_rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="@+id/label_solo_win_rate"
-                app:layout_constraintRight_toRightOf="@+id/num_win_rate"
-                app:layout_constraintTop_toBottomOf="@+id/num_win_rate"
-                tools:text="상위 40%"/>
-
-            <TextView
-                android:id="@+id/percent_top10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintHorizontal_bias="0.509"
-                app:layout_constraintLeft_toLeftOf="@+id/label_solo_top10"
-                app:layout_constraintRight_toRightOf="@+id/num_top10_rate"
-                app:layout_constraintTop_toBottomOf="@+id/num_top10_rate"
-                tools:text="상위 20%"/>
-
-            <FrameLayout
-                android:id="@+id/line2"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="94dp"
-                android:background="@android:color/white"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_solo_row">
-
-            </FrameLayout>
-
-            <TextView
-                android:id="@+id/label_duo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="DUO"
-                android:textSize="@dimen/size_subtitle"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line2"/>
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:text="100위"
-                app:layout_constraintBaseline_toBaselineOf="@+id/label_duo"
-                app:layout_constraintLeft_toRightOf="@+id/label_duo"/>
-
-            <FrameLayout
-                android:id="@+id/line3"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="21dp"
-                android:background="@android:color/white"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/label_duo">
-
-            </FrameLayout>
-
-            <TextView
-                android:id="@+id/lavel_squad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="SQUAD"
-                android:textSize="@dimen/size_subtitle"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line3"/>
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:text="66위"
-                app:layout_constraintBaseline_toBaselineOf="@+id/lavel_squad"
-                app:layout_constraintLeft_toRightOf="@+id/lavel_squad"/>
-
-            <FrameLayout
-                android:id="@+id/line4"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:background="@android:color/white"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lavel_squad">
-
-            </FrameLayout>
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="최근 게임 "
-                android:textSize="@dimen/size_subtitle"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line4"/>
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:text="결과없음"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"/>
-
-        </android.support.constraint.ConstraintLayout>
+            <include layout="@layout/row_solo"
+                     app:layout_constraintLeft_toLeftOf="parent"
+                     app:layout_constraintRight_toRightOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/spinner_locale"/>
 
 
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 </layout>
